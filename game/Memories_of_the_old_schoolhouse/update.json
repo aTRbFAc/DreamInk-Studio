@@ -1,7 +1,7 @@
 {
-  "versionName": "2.1",     //代表最新软件版本名字
-  "versionCode": 9999999,          //代表最新软件版本号
-  "description": "版本跟新测试 V2.7111722223335552",    //代表最新软件都更新了什么，也就是更新内容
-  "downloadUrl": "https://xxx/DrUb_up_2.6.apk",   //最新软件的下载地址，可以是第三方地址，比如蓝奏和百度网盘
-  "forceUpdate": false      //代表软件是否要强制安装，false 不用强制更新，true 强制更新
+  "versionName": "2.1",
+  "versionCode": "9999999",
+  "description": "版本跟新测试 V2.7111722223335552",
+  "downloadUrl": "https://xxx/DrUb_up_2.6.apk",
+  "forceUpdate": false
 }
