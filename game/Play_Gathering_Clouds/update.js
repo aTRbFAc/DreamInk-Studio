@@ -1,1 +1,7 @@
-111
+{
+  "versionName": "0.1",
+  "versionCode": "250516",
+  "description": "0.1 内测版发布",
+  "downloadUrl": "https://.apk",
+  "forceUpdate": false
+}
