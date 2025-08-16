@@ -382,6 +382,7 @@
                 e.preventDefault();
                 const productTitle = this.closest('.portfolio-card').querySelector('.card-title').textContent;
                 alert(`正在跳转下载: ${productTitle}`);
+                window.location.href = this.href
             });
         });
 
@@ -390,6 +391,7 @@
                 e.preventDefault();
                 const productTitle = this.closest('.portfolio-card').querySelector('.card-title').textContent;
                 alert(`正在跳转下载: ${productTitle}\n(此作品已停止维护，后续将不会更新)`);
+                window.location.href = this.href
             });
         });
 
