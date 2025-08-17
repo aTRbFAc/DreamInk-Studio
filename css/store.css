@@ -167,6 +167,25 @@
             background: linear-gradient(45deg, #a9a9a9 , #707070);
         }
 
+        .download-btn-COD {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .download-btn-COD:hover {
+            background: linear-gradient(45deg, #FFA500 , #FF8C00);
+        }
+
         footer {
             text-align: center;
             padding: 3rem 0 2rem;
