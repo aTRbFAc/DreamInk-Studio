@@ -415,6 +415,15 @@
                 alert(`${productTitle}\n(此作品已下架，无法下载)`);
             });
         });
+
+
+document.querySelectorAll('.download-btn-COD').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const productTitle = this.closest('.portfolio-card').querySelector('.card-title').textContent;
+                alert(`${productTitle}\n(此作品还未上线，尽请期待～)`);
+            });
+        });
     </script>
 </body>
 </html>
