@@ -1,3 +1,35 @@
+        // 内联的CSS动画样式
+        var style = document.createElement('style');
+        style.textContent = `
+            @keyframes ribbonFlow {
+                0% { transform: translateX(-100%); opacity: 0; }
+                10% { opacity: 0.8; }
+                90% { opacity: 0.8; }
+                100% { transform: translateX(200%); opacity: 0; }
+            }
+            @keyframes starTwinkle {
+                0%, 100% { 
+                    opacity: 0.6; 
+                    transform: scale(1) rotate(0deg);
+                }
+                50% { 
+                    opacity: 1; 
+                    transform: scale(1.2) rotate(180deg);
+                }
+            }
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(clamp(15px, 3vw, 30px));
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
         document.addEventListener('DOMContentLoaded', function() {
             const banner = document.querySelector('.national-celebration');
             const stars = document.querySelectorAll('.decorative-star');
@@ -16,33 +48,6 @@
             
             window.addEventListener('resize', handleResize);
             handleResize();
-            
-            banner.addEventListener('mousemove', function(e) {
-                if (window.innerWidth > 768) {
-                    const moveX = (e.clientX - window.innerWidth / 2) / 25;
-                    const moveY = (e.clientY - window.innerHeight / 2) / 25;
-                    
-                    this.style.transform = `translateY(clamp(-3px, -0.3vw, -5px)) translateX(${moveX}px) translateY(${moveY}px) scale(1.01)`;
-                    
-                    stars.forEach(star => {
-                        const speed = 0.02;
-                        const x = (e.clientX - window.innerWidth / 2) * speed;
-                        const y = (e.clientY - window.innerHeight / 2) * speed;
-                        star.style.transform = `translate(${x}px, ${y}px)`;
-                    });
-                }
-            });
-            
-            banner.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(clamp(-3px, -0.3vw, -5px)) scale(1.01)';
-                stars.forEach(star => {
-                    star.style.transform = 'translate(0, 0)';
-                });
-            });
-            
-            banner.addEventListener('click', function(e) {
-                createFirework(e.clientX, e.clientY);
-            });
             
             function createFirework(x, y) {
                 const firework = document.createElement('div');
