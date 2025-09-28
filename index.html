@@ -98,8 +98,6 @@
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     " onmouseenter="this.style.transform='translateY(clamp(-3px, -0.3vw, -5px)) scale(1.01)'; this.style.boxShadow='0 clamp(12px, 2vw, 16px) clamp(25px, 4vw, 50px) rgba(222, 41, 16, 0.3), 0 clamp(6px, 1vw, 10px) clamp(15px, 2.5vw, 30px) rgba(255, 153, 51, 0.2)'" 
        onmouseleave="this.style.transform='translateY(clamp(-3px, -0.3vw, -5px)) scale(1.01)'; this.style.boxShadow='0 clamp(8px, 1.5vw, 12px) clamp(20px, 3vw, 40px) rgba(222, 41, 16, 0.25), 0 clamp(4px, 0.8vw, 8px) clamp(12px, 2vw, 25px) rgba(255, 153, 51, 0.15)'"
-       onmousemove="if (window.innerWidth > 768) { const moveX = (event.clientX - window.innerWidth / 2) / 25; const moveY = (event.clientY - window.innerHeight / 2) / 25; this.style.transform='translateY(clamp(-3px, -0.3vw, -5px)) translateX(' + (moveX) + 'px) translateY(' + (moveY) + 'px) scale(1.01)'; var stars = document.querySelectorAll('.decorative-star'); for (var i = 0; i < stars.length; i++) { var star = stars[i]; var speed = 0.02; var x = (event.clientX - window.innerWidth / 2) * speed; var y = (event.clientY - window.innerHeight / 2) * speed; star.style.transform='translate(' + x + 'px, ' + y + 'px)'; } }"
-       onmouseleave="if (window.innerWidth > 768) { var stars = document.querySelectorAll('.decorative-star'); for (var i = 0; i < stars.length; i++) { var star = stars[i]; star.style.transform='translate(0, 0)'; } }"
        onclick="createFirework(event.clientX, event.clientY)"
     >
         <div style="
