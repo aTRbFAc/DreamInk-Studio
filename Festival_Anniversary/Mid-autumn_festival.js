@@ -1,4 +1,3 @@
-        // 内联的CSS动画样式
         var style = document.createElement('style');
         style.textContent = `
             @keyframes moonGlow {
@@ -61,7 +60,7 @@
             const stars = document.querySelectorAll('.star');
             const clouds = document.querySelectorAll('div[style*="background: rgba(255, 255, 255, 0.1)"]');
             const moon = document.querySelector('.moon-background');
-            
+
             function handleResize() {
                 const width = window.innerWidth;
                 if (width < 480) {
@@ -75,10 +74,10 @@
                     if (moon) moon.style.display = 'block';
                 }
             }
-            
+
             window.addEventListener('resize', handleResize);
             handleResize();
-            
+
             function createLantern(x, y) {
                 const lantern = document.createElement('div');
                 lantern.innerHTML = '🏮';
@@ -90,22 +89,27 @@
                 lantern.style.zIndex = '1000';
                 lantern.style.transform = 'translate(-50%, -50%)';
                 lantern.style.animation = 'lanternFloat 3s ease-out forwards';
-                
+
                 document.body.appendChild(lantern);
-                
+
                 setTimeout(() => {
                     if (lantern.parentNode) {
                         lantern.parentNode.removeChild(lantern);
                     }
                 }, 3000);
             }
-            
+
+            banner.addEventListener('click', function(e) {
+                e.stopPropagation();
+                createLantern(e.clientX, e.clientY);
+            });
+
             var cloudElements = document.querySelectorAll('div[style*="background: rgba(255, 255, 255, 0.1)"]');
             cloudElements.forEach(cloud => {
                 const randomSpeed = 15 + Math.random() * 10;
                 cloud.style.animationDuration = randomSpeed + 's';
             });
-            
+
             if (window.innerWidth > 768) {
                 setInterval(() => {
                     const randomX = Math.random() * window.innerWidth;
