@@ -240,7 +240,7 @@
                 text-shadow: clamp(1px, 0.2vw, 2px) clamp(1px, 0.2vw, 2px) clamp(2px, 0.4vw, 4px) rgba(0, 0, 0, 0.15);
                 letter-spacing: clamp(1px, 0.2vw, 2px);
                 line-height: 1.1;
-            ">成立75周年</div>
+            ">成立76周年</div>
             <div style="
                 font-size: clamp(0.9rem, 2.5vw, 1.4rem);
                 font-weight: 500;
@@ -256,9 +256,223 @@
                 font-weight: 400;
                 letter-spacing: clamp(0.3px, 0.06vw, 0.5px);
                 line-height: 1.4;
-            ">文幻工作室 敬贺 · 创意成就未来</div>
+            ">文幻工作室 敬贺 · 国家繁荣昌盛</div>
         </div>
     </div><!--国庆节-->
+   <div class="mid-autumn-celebration" style="
+        position: relative;
+        width: 100%;
+        max-width: min(1200px, 95vw);
+        aspect-ratio: 16 / 7;
+        min-height: 280px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, 
+            #2c3e50 0%, #34495e 25%, #2c3e50 50%, #34495e 75%, #2c3e50 100%);
+        border-radius: clamp(16px, 2.5vw, 24px);
+        box-shadow: 
+            0 clamp(10px, 2vw, 16px) clamp(25px, 4vw, 50px) rgba(44, 62, 80, 0.4),
+            0 clamp(6px, 1.2vw, 10px) clamp(15px, 2.5vw, 30px) rgba(52, 73, 94, 0.3);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    " onmouseenter="this.style.transform='translateY(clamp(-4px, -0.4vw, -6px)) scale(1.02)'; this.style.boxShadow='0 clamp(14px, 2.5vw, 20px) clamp(30px, 5vw, 60px) rgba(44, 62, 80, 0.5), 0 clamp(8px, 1.5vw, 12px) clamp(20px, 3vw, 40px) rgba(52, 73, 94, 0.4)'" 
+       onmouseleave="this.style.transform='translateY(clamp(-4px, -0.4vw, -6px)) scale(1.02)'; this.style.boxShadow='0 clamp(10px, 2vw, 16px) clamp(25px, 4vw, 50px) rgba(44, 62, 80, 0.4), 0 clamp(6px, 1.2vw, 10px) clamp(15px, 2.5vw, 30px) rgba(52, 73, 94, 0.3)'"
+       onmousemove="if (window.innerWidth > 768) { const moveX = (event.clientX - window.innerWidth / 2) / 30; const moveY = (event.clientY - window.innerHeight / 2) / 30; this.style.transform='translateY(clamp(-4px, -0.4vw, -6px)) translateX(' + (moveX) + 'px) translateY(' + (moveY) + 'px) scale(1.02)'; var moon = document.querySelector('.moon-background'); if (moon) { const moonX = (event.clientX - window.innerWidth / 2) / 50; const moonY = (event.clientY - window.innerHeight / 2) / 50; moon.style.transform='translateY(-50%) translateX(' + (moonX) + 'px) translateY(' + (moonY) + 'px)'; } var stars = document.querySelectorAll('.star'); for (var i = 0; i < stars.length; i++) { var star = stars[i]; var speed = 0.015; var x = (event.clientX - window.innerWidth / 2) * speed; var y = (event.clientY - window.innerHeight / 2) * speed; star.style.transform='translate(' + (x) + 'px, ' + (y) + 'px)'; } }"
+       onmouseleave="if (window.innerWidth > 768) { var moon = document.querySelector('.moon-background'); if (moon) { moon.style.transform='translateY(-50%)'; } var stars = document.querySelectorAll('.star'); for (var i = 0; i < stars.length; i++) { var star = stars[i]; star.style.transform='translate(0, 0)'; } }"
+       onclick="createLantern(event.clientX, event.clientY)"
+    >
+        <div style="
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            width: clamp(80px, 15vw, 150px);
+            height: clamp(80px, 15vw, 150px);
+            background: radial-gradient(circle, #ffd700 30%, #ffed4e 70%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 clamp(30px, 6vw, 60px) rgba(255, 215, 0, 0.6),
+                0 0 clamp(60px, 12vw, 120px) rgba(255, 237, 78, 0.4);
+            animation: moonGlow 3s ease-in-out infinite alternate;
+        "></div>
+        
+        <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        ">
+            <div style="
+                position: absolute;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                animation: cloudFloat 20s linear infinite;
+                top: 20%;
+                left: -50px;
+                width: clamp(60px, 12vw, 120px);
+                height: clamp(40px, 8vw, 80px);
+                animation-delay: 0s;
+            "></div>
+            <div style="
+                position: absolute;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                animation: cloudFloat 20s linear infinite;
+                top: 60%;
+                left: -80px;
+                width: clamp(80px, 16vw, 160px);
+                height: clamp(50px, 10vw, 100px);
+                animation-delay: 5s;
+            "></div>
+            <div style="
+                position: absolute;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                animation: cloudFloat 20s linear infinite;
+                top: 40%;
+                left: -120px;
+                width: clamp(100px, 20vw, 200px);
+                height: clamp(60px, 12vw, 120px);
+                animation-delay: 10s;
+            "></div>
+            
+            <div style="
+                position: absolute;
+                color: #ffd700;
+                font-size: clamp(12px, 2.5vw, 24px);
+                animation: starTwinkle 4s ease-in-out infinite;
+                text-shadow: 0 0 clamp(5px, 1vw, 10px) rgba(255, 215, 0, 0.8);
+                top: 15%;
+                left: 15%;
+                animation-delay: 0s;
+            ">✦</div>
+            <div style="
+                position: absolute;
+                color: #ffd700;
+                font-size: clamp(12px, 2.5vw, 24px);
+                animation: starTwinkle 4s ease-in-out infinite;
+                text-shadow: 0 0 clamp(5px, 1vw, 10px) rgba(255, 215, 0, 0.8);
+                top: 25%;
+                right: 20%;
+                animation-delay: 1s;
+            ">✦</div>
+            <div style="
+                position: absolute;
+                color: #ffd700;
+                font-size: clamp(12px, 2.5vw, 24px);
+                animation: starTwinkle 4s ease-in-out infinite;
+                text-shadow: 0 0 clamp(5px, 1vw, 10px) rgba(255, 215, 0, 0.8);
+                bottom: 20%;
+                left: 10%;
+                animation-delay: 2s;
+            ">✦</div>
+            <div style="
+                position: absolute;
+                color: #ffd700;
+                font-size: clamp(12px, 2.5vw, 24px);
+                animation: starTwinkle 4s ease-in-out infinite;
+                text-shadow: 0 0 clamp(5px, 1vw, 10px) rgba(255, 215, 0, 0.8);
+                bottom: 30%;
+                right: 15%;
+                animation-delay: 3s;
+            ">✦</div>
+            <div style="
+                position: absolute;
+                color: #ffd700;
+                font-size: clamp(12px, 2.5vw, 24px);
+                animation: starTwinkle 4s ease-in-out infinite;
+                text-shadow: 0 0 clamp(5px, 1vw, 10px) rgba(255, 215, 0, 0.8);
+                top: 35%;
+                left: 25%;
+                animation-delay: 0.5s;
+            ">✦</div>
+            <div style="
+                position: absolute;
+                color: #ffd700;
+                font-size: clamp(12px, 2.5vw, 24px);
+                animation: starTwinkle 4s ease-in-out infinite;
+                text-shadow: 0 0 clamp(5px, 1vw, 10px) rgba(255, 215, 0, 0.8);
+                bottom: 15%;
+                right: 25%;
+                animation-delay: 1.5s;
+            ">✦</div>
+        </div>
+        
+        <div style="
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(24px, 5vw, 48px);
+            animation: mooncakeBounce 2s ease-in-out infinite;
+        ">🥮</div>
+        
+        <div style="
+            text-align: center;
+            color: #ffffff;
+            z-index: 20;
+            position: relative;
+            padding: clamp(20px, 4vw, 40px);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: clamp(12px, 2vw, 20px);
+            backdrop-filter: blur(clamp(8px, 1.5vw, 15px));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 80%;
+        ">
+            <div style="
+                font-size: clamp(1.6rem, 4.5vw, 3.2rem);
+                font-weight: 700;
+                margin: 0 0 clamp(8px, 1.5vw, 15px) 0;
+                background: linear-gradient(135deg, #ffd700, #ffed4e, #ffffff);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-shadow: 0 0 clamp(10px, 2vw, 20px) rgba(255, 215, 0, 0.3);
+                letter-spacing: clamp(1px, 0.2vw, 2px);
+                line-height: 1.2;
+            ">中秋月圆 · 情满人间</div>
+            <div style="
+                font-size: clamp(2rem, 5.5vw, 3.8rem);
+                font-weight: 800;
+                margin: clamp(5px, 1vw, 10px) 0;
+                color: #ffd700;
+                text-shadow: 
+                    0 0 clamp(8px, 1.5vw, 15px) rgba(255, 215, 0, 0.5),
+                    0 0 clamp(16px, 3vw, 30px) rgba(255, 237, 78, 0.3);
+                letter-spacing: clamp(2px, 0.4vw, 4px);
+                line-height: 1.1;
+            ">佳节团圆</div>
+            <div style="
+                font-size: clamp(1rem, 2.8vw, 1.6rem);
+                font-weight: 500;
+                margin: clamp(10px, 2vw, 20px) 0 clamp(5px, 1vw, 10px) 0;
+                color: #e8e8e8;
+                font-style: italic;
+                line-height: 1.4;
+            ">月到中秋分外明，人逢佳节倍思亲</div>
+            <div style="
+                font-size: clamp(1rem, 2.8vw, 1.6rem);
+                font-weight: 500;
+                margin: clamp(5px, 1vw, 10px) 0;
+                color: #e8e8e8;
+                font-style: italic;
+                line-height: 1.4;
+            ">愿您与家人共度美好时光</div>
+            <div style="
+                font-size: clamp(0.8rem, 2.2vw, 1.2rem);
+                color: #cccccc;
+                margin-top: clamp(12px, 2.5vw, 25px);
+                font-weight: 400;
+                letter-spacing: clamp(0.5px, 0.1vw, 1px);
+                line-height: 1.4;
+            ">文幻工作室 恭祝中秋快乐 · 阖家欢乐笑开颜</div>
+        </div>
+    </div><!--中秋节-->
 
     <!-- 服务项目 -->
     <section id="services" class="section services">
