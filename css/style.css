@@ -39,6 +39,25 @@ ul {
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
 }
+.back-home {
+    text-align: center;
+    margin: 10px 0 20px;
+}
+
+.home-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.home-btn:hover {
+    background-color: #0056b3;
+}
 
 .nav {
     display: flex;
