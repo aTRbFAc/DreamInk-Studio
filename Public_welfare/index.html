@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公益快车道 | 文幻工作室 DreamInk Studio</title>
+    <link rel="icon" href="images/LOGO.jpg" sizes="16x16" type="image/jpg">
+    <link rel="icon" href="images/LOGO.jpg" sizes="32x32" type="image/jpg">
+    <link rel="icon" href="images/LOGO.jpg" sizes="48x48" type="image/jpg">
+    <link rel="icon" href="images/LOGO.jpg" sizes="64x64" type="image/jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+         :root {
+            --primary: #e61a4a;
+            /* 小红花红 */
+            --primary-light: #ffccd5;
+            /* 红色浅光 */
+            --pink: #ffcce6;
+            /* 柔粉 */
+            --orange: #ffe8c5;
+            /* 浅橙 */
+            --bg: #fff9f0;
+            /* 奶白背景 */
+            --card-bg: white;
+            --text: #333;
+            --shadow: 0 4px 12px rgba(230, 26, 74, 0.1);
+            --hover: translateY(-6px);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+        }
+        /* 背景小红花图案（轻量 SVG） */
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 10% 20%, rgba(230, 26, 74, 0.05) 0%, transparent 10%), radial-gradient(circle at 90% 80%, rgba(255, 150, 200, 0.08) 0%, transparent 15%), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'><path fill='%23e61a4a22' d='M12 17.5c-1.8 0-3.5-0.7-4.8-1.9L12 10l4.8 5.6c-1.3 1.2-3 1.9-4.8 1.9z'/><circle cx='12' cy='8' r='4' fill='%23e61a4a11'/></svg>");
+            background-repeat: repeat;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        header {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .logo {
+            font-size: 2.2em;
+            color: var(--primary);
+            font-family: 'Ma Shan Zheng', cursive;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        
+        .slogan {
+            font-size: 1.1em;
+            color: #e61a4a;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            padding: 0 15px;
+        }
+        
+        h1::after {
+            content: '🌼';
+            position: absolute;
+            right: -30px;
+            top: -15px;
+            font-size: 1.5em;
+        }
+        
+        .tip {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 16px;
+            margin: 25px 0;
+            border-radius: 16px;
+            font-size: 0.95em;
+            color: #555;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .icon-wall {
+            width: 400px;
+            /* 正方形的宽度 */
+            height: 400px;
+            /* 正方形的高度 */
+            display: flex;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: #f8f9fa;
+        }
+        
+        .left-column {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .left-column img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .left-column img:hover {
+            transform: scale(1.05);
+        }
+        
+        .right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .right-item {
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .right-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .right-item img:hover {
+            transform: scale(1.05);
+        }
+        /* 大图预览样式 */
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            cursor: pointer;
+            border: 3px solid #fff;
+        }
+        
+        .platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 22px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.4, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(230, 26, 74, 0.1);
+        }
+        
+        .card:hover {
+            transform: var(--hover);
+            box-shadow: 0 12px 24px rgba(230, 26, 74, 0.18);
+        }
+        
+        .card::before {
+            content: '💗';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05em;
+        }
+        
+        .card img {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid var(--primary-light);
+            background: #f9f9f9;
+        }
+        
+        .card .desc {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 6px;
+            display: block;
+        }
+        
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #888;
+            padding: 20px;
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 600px) {
+            .platforms {
+                grid-template-columns: 1fr;
+            }
+            .logo {
+                font-size: 1.8em;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            body {
+                padding: 15px;
+            }
+        }
+        /* 响应式设计 */
+        
+        @media (max-width: 768px) {
+            .icon-wall {
+                width: 100%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">文幻工作室</div>
+        <div class="slogan">DreamInk Studio | 创造无限可能</div>
+    </header>
+    <h1>公益快车道</h1>
+    <div class="tip">
+        🌸 感谢您的访问(◍•ᴗ•◍) <br> 我相信能看到这句话的你们，一定都很善良吧<br> 点击一下，让每一份善意都安全抵达。
+    </div>
+    <!-- 大图预览容器 -->
+    <div class="lightbox" id="lightbox">
+        <image src="" alt="大图预览" id="lightbox-img">
+    </div>
+    <!-- 公益广告展示图-->
+    <div class="icon-wall">
+        <!-- 左边竖图 -->
+        <div class="left-column">
+            <image src="90318-10771.jpg" alt="公益广告竖图">
+        </div>
+        <!-- 右边两张横图 -->
+        <div class="right-column">
+            <div class="right-item">
+                <image src="65298-2605.jpg" alt="公益广告横图1">
+            </div>
+            <div class="right-item">
+                <image src="31328-2759.jpg" alt="公益广告横图2">
+            </div>
+        </div>
+    </div>
+    <div class="platforms">
+        <!-- 宝贝回家 -->
+        <div class="card">
+            <a href="https://baobeihuijia.com/bbhj/" target="_blank">
+                <img src="https://baobeihuijia.com/bbhj/assets/images/favicon.png" alt="宝贝回家"> 宝贝回家
+            </a>
+            <span class="desc">关爱儿童我们共同的责任</span>
+        </div>
+        <!-- 让爱回家公益寻人网 -->
+        <div class="card">
+            <a href="https://www.rangaihuijia.com/" target="_blank">
+                <img src="https://www.rangaihuijia.com/favicon.ico" alt="让爱回家公益寻人网"> 让爱回家公益寻人网
+            </a>
+            <span class="desc">为缘寻找，让爱回家！不抛弃，不放弃！ </span>
+        </div>
+        <!-- 中国寻亲网 -->
+        <div class="card">
+            <a href="https://www.chinaxunqin.com/" target="_blank">
+                <img src="https://www.chinaxunqin.com/zb_users/upload/2024/09/202409071725696051859617.ico" alt="中国寻亲网"> 中国寻亲网
+            </a>
+            <span class="desc">让爱传递，无论你在哪里，都要找到你！</span>
+        </div>
+        <!-- 腾讯公益 -->
+        <div class="card">
+            <a href="https://gongyi.qq.com" target="_blank">
+                <img src="https://gongyi.qq.com/favicon.ico" alt="腾讯公益"> 腾讯公益
+            </a>
+            <span class="desc">微信生态，一起捐超方便</span>
+        </div>
+        <!-- 支付宝公益 -->
+        <div class="card">
+            <a href="https://love.alipay.com" target="_blank">
+                <img src="https://i.alipayobjects.com/common/favicon/favicon.ico" alt="支付宝公益"> 支付宝公益
+            </a>
+            <span class="desc">余额宝收益也能做公益</span>
+        </div>
+        <!-- 京东公益 -->
+        <div class="card">
+            <a href="https://gongyi.jd.com" target="_blank">
+                <img src="https://img10.360buyimg.com/jdw/jfs/t1/198615/38/8365/3019/61404a06E6f1f0591/5d6a34ee21f64dee.png" alt="京东公益"> 京东公益
+            </a>
+            <span class="desc">买一捐一，电商献爱心</span>
+        </div>
+        <!-- 轻松公益 -->
+        <div class="card">
+            <a href="https://www.qschou.com" target="_blank">
+                <img src="https://qsgy.qschou.com/favicon.ico" alt="轻松公益"> 轻松公益
+            </a>
+            <span class="desc">紧急救助，快速响应</span>
+        </div>
+        <!-- 水滴公益 -->
+        <div class="card">
+            <a href="https://www.shuidigongyi.cn/" target="_blank">
+                <img src="https://store.shuidichou.com/imgs/common/favicon1.ico" alt="水滴公益"> 水滴公益
+            </a>
+            <span class="desc">大病筹款，温暖守护</span>
+        </div>
+        <!-- 新华公益 -->
+        <div class="card">
+            <a href="https://xhgy.xinhuanet.com/" target="_blank">
+                <img src="https://www.news.cn/favicon.ico" alt="新华网公益"> 新华公益
+            </a>
+            <span class="desc">权威发布，项目透明</span>
+        </div>
+        <!-- 字节跳动公益 -->
+        <div class="card">
+            <a href="https://gongyi.bytedance.com" target="_blank">
+                <img src="https://lf-welfare.amemv.com/obj/douyin-welfare-image/ies/csr/service_platform/logo.svg" alt="字节跳动公益"> 字节跳动公益
+            </a>
+            <span class="desc">连接善意，共创美好</span>
+        </div>
+        <!-- 凤凰公益 -->
+        <div class="card">
+            <a href="https://gongyi.ifeng.com" target="_blank">
+                <img src="https://i.ifeng.com/favicon.ico" alt="凤凰公益"> 凤凰公益
+            </a>
+            <span class="desc">深度报道 + 公益结合</span>
+        </div>
+        <!-- 美团公益 -->
+        <div class="card">
+            <a href="https://gongyi.meituan.com" target="_blank">
+                <img src="https://gongyi.meituan.com/favicon.ico" alt="美团公益"> 美团公益
+            </a>
+            <span class="desc">吃饭也能献爱心</span>
+        </div>
+        <!-- 平安公益 -->
+        <div class="card">
+            <a href="https://www.pafoundation.org.cn" target="_blank">
+                <img src="https://www.pingan.com/favicon.ico" alt="平安公益"> 平安公益
+            </a>
+            <span class="desc">金融+公益新模式</span>
+        </div>
+        <!-- 小米公益 -->
+        <div class="card">
+            <a href="https://gongyi.mi.com/" target="_blank">
+                <img src="https://www.mi.com/favicon.ico" alt="小米公益"> 小米公益
+            </a>
+            <span class="desc">科技向善，青年友好</span>
+        </div>
+        <!-- 360公益 -->
+        <div class="card">
+            <a href="https://www.360gongyi.com" target="_blank">
+                <img src="https://www.360gongyi.com/favicon.png" alt="360公益"> 360公益
+            </a>
+            <span class="desc">安全守护 + 公益联动</span>
+        </div>
+        <!-- 易宝公益 -->
+        <div class="card">
+            <a href="https://gongyi.yeepay.com/www/" target="_blank">
+                <img src="https://www.yeepay.com/favicon.ico" alt="易宝公益"> 易宝公益
+            </a>
+            <span class="desc">支付即捐赠</span>
+        </div>
+        <!-- 联劝网 -->
+        <div class="card">
+            <a href="https://www.lianquan.org" target="_blank">
+                <img src="https://lqwimg.oss-cn-shanghai.aliyuncs.com/harp/logo-pc.png?v=1.1.4" alt="联劝网"> 联劝网
+            </a>
+            <span class="desc">上海老牌公益平台</span>
+        </div>
+        <!-- 亲青公益 -->
+        <div class="card">
+            <a href="https://qinqing.cydf.org.cn" target="_blank">
+                <img src="https://qinqing.cydf.org.cn/favicon.ico" alt="亲青公益"> 亲青公益
+            </a>
+            <span class="desc">团中央背景，青年志愿多</span>
+        </div>
+        <!-- 中国社会帮扶网 -->
+        <div class="card">
+            <a href="https://zgshbfw.com/" target="_blank">
+                <img src="https://zgshbfw.com/favicon.ico" alt="中国社会帮扶网"> 中国社会帮扶网
+            </a>
+            <span class="desc">国家级精准扶贫平台</span>
+        </div>
+        <!-- 帮帮公益 -->
+        <div class="card">
+            <a href="https://www.bangbangwang.cn" target="_blank">
+                <img src="https://www.bangbangwang.cn/clients/app/favicon.ico" alt="帮帮公益"> 帮帮公益
+            </a>
+            <span class="desc">中华思源工程旗下</span>
+        </div>
+        <!-- 慈链公益 -->
+        <div class="card">
+            <a href="https://www.sdecoa.com" target="_blank">
+                <img src="https://www.sdecoa.com/favicon.ico" alt="慈链公益"> 慈链公益
+            </a>
+            <span class="desc">公益透明化</span>
+        </div>
+        <!-- 广州市慈善会 -->
+        <div class="card">
+            <a href="https://www.guangzhoucishan.org.cn" target="_blank">
+                <img src="https://www.guangzhoucishan.org.cn/favicon.ico" alt="广州市慈善会"> 广州市慈善会
+            </a>
+            <span class="desc">扶弱济困  见难相助</span>
+        </div>
+        <!-- 广益联募 -->
+        <div class="card">
+            <a href="https://www.gyufc.org" target="_blank">
+                <img src="https://www.gyufc.org/favicon.ico" alt="广益联募"> 广益联募
+            </a>
+            <span class="desc">广州优质项目聚合</span>
+        </div>
+        <!-- 淮安阳光慈善网 -->
+        <div class="card">
+            <a href="http://hascszh.haciai.cn/" target="_blank">
+                <img src="http://hascszh.haciai.cn/favicon.ico" alt="淮安阳光慈善网"> 淮安阳光慈善网
+            </a>
+            <span class="desc">慈心为本、善举为民</span>
+        </div>
+        <!-- 基金会中心网 -->
+        <div class="card">
+            <a href="https://www.foundationcenter.org.cn/" target="_blank">
+                <img src="https://www.foundationcenter.org.cn/cfc-logo.png" alt="基金会中心网"> 基金会中心网
+            </a>
+            <span class="desc">查基金会资质超有用</span>
+        </div>
+        <!-- 苏宁公益 -->
+        <div class="card">
+            <a href="https://gongyi.suning.com" target="_blank">
+                <img src="https://gongyi.suning.com/favicon.ico" alt="苏宁公益"> 苏宁公益
+            </a>
+            <span class="desc">物流+物资支援快</span>
+        </div>
+        <br>
+    </div>
+    <!-- 公益嵌入式组件（自动轮播） -->
+    <iframe src="https://www.chinaxunqin.com/" width="100%" height="300" style="border: 1px solid #eee; border-radius: 8px; overflow: hidden;" frameborder="0">
+</iframe>
+    <div class="tip">
+        🌸 再次感谢您对公益事业的支持与付出！<br> 愿幸福好运与您常伴！
+    </div>
+    <footer>
+        🌱 本页面由 <a href="https://atrbfac.top" target="_blank">文幻工作室 DreamInk Studio</a> 设计<br> © 2024 - 2025 文幻工作室 | 为爱而生，创造无限可能 ❤️
+    </footer>
+    <script>
+        // 获取 lightbox 元素
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        // 为所有 icon-wall 中的图片添加点击事件
+        document.querySelectorAll('.icon-wall img').forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+        // 点击 lightbox 关闭大图
+        lightbox.addEventListener('click', function() {
+            this.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
