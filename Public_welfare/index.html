@@ -27,13 +27,13 @@
             --shadow: 0 4px 12px rgba(230, 26, 74, 0.1);
             --hover: translateY(-6px);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
             background: var(--bg);
@@ -46,7 +46,7 @@
             position: relative;
         }
         /* 背景小红花图案（轻量 SVG） */
-        
+
         body::before {
             content: '';
             position: fixed;
@@ -60,12 +60,12 @@
             pointer-events: none;
             z-index: -1;
         }
-        
+
         header {
             text-align: center;
             margin: 30px 0;
         }
-        
+
         .logo {
             font-size: 2.2em;
             color: var(--primary);
@@ -73,14 +73,14 @@
             letter-spacing: 2px;
             margin-bottom: 8px;
         }
-        
+
         .slogan {
             font-size: 1.1em;
             color: #e61a4a;
             font-weight: 400;
             letter-spacing: 1px;
         }
-        
+
         h1 {
             font-size: 1.8em;
             color: var(--primary);
@@ -90,7 +90,7 @@
             display: inline-block;
             padding: 0 15px;
         }
-        
+
         h1::after {
             content: '🌼';
             position: absolute;
@@ -98,7 +98,7 @@
             top: -15px;
             font-size: 1.5em;
         }
-        
+
         .tip {
             background: var(--primary-light);
             border-left: 4px solid var(--primary);
@@ -113,58 +113,93 @@
             text-align: center;
             box-shadow: var(--shadow);
         }
-        
-        .icon-wall {
-            width: 400px;
-            height: 400px;
-            display: flex;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background: #f8f9fa;
-        }
-        
+
+/* 容器：确保居中且响应式 */
+.container {
+    width: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 图标墙：动态正方形，基于宽度 */
+.icon-wall {
+    width: 90vw; /* 视口宽度的80% */
+    height: 90vw; /* 高度 = 宽度，保证是正方形 */
+    max-width: 600px; /* 限制最大尺寸 */
+    max-height: 600px;
+    aspect-ratio: 1 / 1; /* 强制保持正方形，现代浏览器推荐写法 */
+    display: flex;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+}
+
+/* 响应式：在小屏幕上缩小 */
+@media (max-height: 600px) {
+    .icon-wall {
+        height: 70vw;
+        width: 70vw;
+        max-height: 360px;
+        max-width: 360px;
+    }
+}
+
+@media (max-width: 480px) {
+    .icon-wall {
+        width: 100vw;
+        height: 100vw;
+        max-width: 700px;
+        max-height: 700px;
+    }
+}
+
         .left-column {
             flex: 1;
             height: 100%;
             overflow: hidden;
         }
-        
+
         .left-column img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .left-column img:hover {
             transform: scale(1.05);
         }
-        
+
         .right-column {
             flex: 1;
             display: flex;
             flex-direction: column;
             height: 100%;
         }
-        
+
         .right-item {
             flex: 1;
             overflow: hidden;
         }
-        
+
         .right-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .right-item img:hover {
             transform: scale(1.05);
         }
         /* 大图预览样式 */
-        
+
         .lightbox {
             display: none;
             position: fixed;
@@ -177,7 +212,7 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .lightbox img {
             max-width: 90%;
             max-height: 90%;
@@ -185,14 +220,14 @@
             cursor: pointer;
             border: 3px solid #fff;
         }
-        
+
         .platforms {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 22px;
             margin-top: 30px;
         }
-        
+
         .card {
             background: var(--card-bg);
             border-radius: 18px;
@@ -203,12 +238,12 @@
             overflow: hidden;
             border: 1px solid rgba(230, 26, 74, 0.1);
         }
-        
+
         .card:hover {
             transform: var(--hover);
             box-shadow: 0 12px 24px rgba(230, 26, 74, 0.18);
         }
-        
+
         .card::before {
             content: '💗';
             position: absolute;
@@ -218,11 +253,11 @@
             opacity: 0;
             transition: opacity 0.5s;
         }
-        
+
         .card:hover::before {
             opacity: 1;
         }
-        
+
         .card a {
             color: var(--primary);
             text-decoration: none;
@@ -232,7 +267,7 @@
             gap: 12px;
             font-size: 1.05em;
         }
-        
+
         .card img {
             width: 36px;
             height: 36px;
@@ -241,14 +276,14 @@
             border: 1px solid var(--primary-light);
             background: #f9f9f9;
         }
-        
+
         .card .desc {
             font-size: 0.85em;
             color: #777;
             margin-top: 6px;
             display: block;
         }
-        
+
         footer {
             margin-top: 60px;
             text-align: center;
@@ -256,13 +291,13 @@
             color: #888;
             padding: 20px;
         }
-        
+
         footer a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
         }
-        
+
         @media (max-width: 600px) {
             .platforms {
                 grid-template-columns: 1fr;
@@ -278,7 +313,7 @@
             }
         }
         /* 响应式设计 */
-        
+
         @media (max-width: 768px) {
             .icon-wall {
                 width: 100%;
@@ -301,11 +336,10 @@
     <div class="lightbox" id="lightbox">
         <image src="" alt="大图预览" id="lightbox-img">
     </div>
-<div style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;">
     <!-- 公益广告展示图-->
+<div class="container">
     <div class="icon-wall">
         <!-- 左边竖图 -->
-        <div class="left-column">
             <image src="./Public_welfare_ pictures/90318-10771.jpg" alt="公益广告竖图">
         </div>
         <!-- 右边两张横图 -->
@@ -319,6 +353,7 @@
         </div>
     </div>
 </div>
+
     <div class="platforms">
         <!-- 宝贝回家 -->
         <div class="card">
