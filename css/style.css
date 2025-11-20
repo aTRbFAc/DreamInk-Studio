@@ -643,96 +643,84 @@ ul {
         padding: 15px;
     };
 }
-        /* 公益卡片整体容器 */
-        .charity-card-container {
-            margin: 40px auto;
-            max-width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-        /* 卡片主体 */
-        
-        .charity-card {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        
-        .charity-card-link {
-            display: block;
-            text-decoration: none;
-        }
-        /* 背景图 */
-        
-        .charity-card-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.6) blur(2px);
-            z-index: 1;
-        }
-        /* 遮罩层 */
-        
-        .charity-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(13, 96, 144, 0.7), rgba(0, 105, 133, 0.5));
-            opacity: 0.8;
-            z-index: 2;
-        }
-        /* 内容文字 */
-        
-        .charity-card-content {
-            position: relative;
-            z-index: 3;
-            padding: 0px;
-            color: white;
-            text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        .charity-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-        
-        .charity-title {
-            margin: 0 0 8px 0;
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-        
-        .charity-desc {
-            margin: 0 0 12px 0;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        
-        .charity-cta {
-            font-size: 14px;
-            color: #ffffff;
-            opacity: 0.9;
-            transition: all 0.2s ease;
-        }
-        
-        .charity-card-link:hover .charity-cta {
-            opacity: 1;
-            transform: translateX(3px);
-        }
+ /* 容器：居中，圆角，阴影 */
+.charity-card-container {
+  margin: 40px auto;
+  max-width: 90%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 卡片主体 */
+.charity-card {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.charity-card-link {
+  display: block;
+  text-decoration: none;
+}
+
+/* 背景图 */
+.charity-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8); 
+  z-index: 1;
+}
+.charity-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  color: white;
+  z-index: 2;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  /* 用弹性盒子重新定义布局 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  /* 去掉原来的 width: 100%，用 left+right 代替 */
+  box-sizing: border-box;
+  /* 确保内边距不会撑大容器 */
+}
+
+/* 图标 & 文字 */
+.charity-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.charity-title {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.charity-desc {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.charity-cta {
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
