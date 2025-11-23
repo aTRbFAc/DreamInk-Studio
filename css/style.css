@@ -724,3 +724,86 @@ ul {
   opacity: 0.9;
   transition: all 0.2s ease;
 }
+/* 支持我们 */
+  .dreamink-support-section {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px 24px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    color: #2D3748;
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 20px rgba(93, 95, 239, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(93, 95, 239, 0.12);
+  }
+
+  .support-title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.55;
+    margin: 0 0 12px 0;
+    color: #1A1A1A;
+  }
+
+  .support-desc {
+    font-size: 15px;
+    color: #718096;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+  }
+
+  .btn-dream-support {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 16px;
+    color: #5D5FEF;
+    background: transparent;
+    border: 1.5px solid #5D5FEF;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(93, 95, 239, 0.12);
+  }
+
+  .btn-dream-support:hover {
+    background: rgba(93, 95, 239, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(93, 95, 239, 0.18);
+  }
+
+  .btn-dream-support::before {
+    content: "✨";
+    margin-right: 8px;
+    animation: dreamink-float 3s ease-in-out infinite;
+  }
+
+  @keyframes dreamink-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 480px) {
+    .dreamink-support-section {
+      margin: 40px 16px;
+      padding: 32px 20px;
+    }
+    .support-title {
+      font-size: 18px;
+    }
+    .support-desc {
+      font-size: 14px;
+    }
+    .btn-dream-support {
+      font-size: 15px;
+      padding: 10px 24px;
+    }
+  }
