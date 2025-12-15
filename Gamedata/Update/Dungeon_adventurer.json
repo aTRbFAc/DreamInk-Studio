@@ -1,7 +1,7 @@
 {
-  "versionName": "1.0",
-  "versionCode": "251214",
-  "description": "1.0 版本发布\n 跳转时请选择浏览器打开哦！",
+  "versionName": "1.1",
+  "versionCode": "251215",
+  "description": "1.修复了部分机型的布局显示问题\n 2.优化了界面显示，界面分为三个部分 \n 跳转时请选择浏览器打开哦！",
   "downloadUrl": "",
   "forceUpdate": true
 }
