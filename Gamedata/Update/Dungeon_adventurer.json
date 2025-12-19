@@ -1,7 +1,7 @@
 {
-  "versionName": "1.3.0",
+  "versionName": "1.4.0",
   "versionCode": "251218",
-  "description": "1.增加了天赋与技能系统 \n 2. 修复了部分已知问题 \n 3.优化了操作体验 \n 跳转时请选择浏览器打开哦！",
+  "description": "1.优化技能天赋系统与机型适配 \n 2.优化了装备背包ui \n 3.新增自动存档 \n 跳转时请选择浏览器打开哦！",
   "downloadUrl": "https://www.123865.com/s/hIeFjv-81Eu3",
   "forceUpdate": false
 }
