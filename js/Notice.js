@@ -215,7 +215,7 @@
 
                 <div class="full-modal-subtitle">三、生效时间及相关说明</div>
                 <ul class="full-modal-list">
-                    <li>1. 本次修订后的《用户服务协议》和《隐私政策》将于<strong>2025年12月29日</strong>正式生效。</li>
+                    <li>1. 本次修订后的《用户服务协议》和《隐私政策》将于<strong>2026年1月1日</strong>正式生效。</li>
                     <li>2. 您可以通过我们的<a href="/agreement.html" target="_blank" class="full-modal-link">官方网站</a>、应用内公告等渠道查阅修订后的完整协议文本。</li>
                     <li>3. 自生效之日起，您使用我们的服务即视为已充分阅读、理解并同意接受修订后的协议内容。若您不同意变更后的协议，可停止使用相关服务并注销账号。</li>
                 </ul>
