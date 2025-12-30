@@ -114,7 +114,7 @@
     const modalHTML = `
         <div class="full-protocol-modal">
             <div class="full-modal-content">
-                <div class="full-modal-title">用户服务协议及隐私政策变更公告</div>
+                <div class="full-modal-title">《隐私政策》及《用户协议》变更公告</div>
                 
                 <div class="full-modal-text">
                     尊敬的用户：为进一步保障您的合法权益，践行更严格的合规标准，文幻工作室（以下简称“本工作室”）根据《中华人民共和国个人信息保护法》《网络安全法》《民法典》等相关法律法规的最新要求，结合业务发展需要，对《用户协议》和《隐私政策》进行了全面修订优化。现将全部变更内容详细告知如下：
