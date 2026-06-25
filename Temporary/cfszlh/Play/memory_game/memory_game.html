@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>记忆翻牌</title>
+<link rel="stylesheet" href="memory_game.css">
+<link rel="stylesheet" href="../../css/Currency.css">
+</head>
+<body>
+<h1>🧠 记忆翻牌</h1>
+<div class="info">
+    <span>关卡: <b id="level">1</b></span>
+    <span>步数: <b id="moves">0</b></span>
+    <span>时间: <b id="timer">0</b>s</span>
+</div>
+<div class="grid" id="grid"></div>
+
+<!-- 记忆阶段遮罩 -->
+<div class="memo-overlay" id="memoOverlay">
+    <div class="memo-text">记住位置！</div>
+    <div class="memo-countdown" id="memoCountdown"></div>
+</div>
+
+<!-- 过关弹窗 -->
+<div class="overlay" id="overlay">
+    <div class="popup">
+        <h2 id="msg"></h2>
+        <button onclick="nextLevel()">下一关</button>
+    </div>
+</div>
+<script src="memory_game.js"></script>
+</body>
+</html>
+

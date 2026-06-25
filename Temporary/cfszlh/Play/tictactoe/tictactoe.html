@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>井字棋 - 挑战老黑</title>
+    <link rel="stylesheet" href="tictactoe.css">
+    <link rel="stylesheet" href="../../css/Currency.css">
+</head>
+<body>
+
+<h1 id="title">井 字 棋</h1>
+
+<div class="scoreboard">
+    <div>玩家 <span class="s-player" id="scorePlayer">0</span></div>
+    <div>平局 <span class="s-draw" id="scoreDraw">0</span></div>
+    <div>老黑 <span class="s-ai" id="scoreAI">0</span></div>
+</div>
+
+<div class="info" id="info">你的回合，请落子</div>
+<div class="cheat-tip" id="cheatTip"></div>
+
+<div class="board" id="board">
+    <button class="cell" data-i="0"></button>
+    <button class="cell" data-i="1"></button>
+    <button class="cell" data-i="2"></button>
+    <button class="cell" data-i="3"></button>
+    <button class="cell" data-i="4"></button>
+    <button class="cell" data-i="5"></button>
+    <button class="cell" data-i="6"></button>
+    <button class="cell" data-i="7"></button>
+    <button class="cell" data-i="8"></button>
+</div>
+
+<button class="btn-restart" id="btnRestart">重新开始</button>
+
+<!-- 结果弹窗 -->
+<div class="modal-overlay" id="modal">
+    <div class="modal">
+        <div class="emoji" id="modalEmoji"></div>
+        <div class="msg" id="modalMsg"></div>
+        <button onclick="closeModal(); resetBoard();">再来一局</button>
+    </div>
+</div>
+
+<script src="tictactoe.js"></script>
+</body>
+</html>

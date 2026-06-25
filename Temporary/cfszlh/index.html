@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逃离十中老黑</title>
+    <link rel="stylesheet" href="./css/login-screen.css">
+    <link rel="stylesheet" href="./css/character-select.css">
+    <link rel="stylesheet" href="./css/dialogue-screen.css">
+    <link rel="stylesheet" href="./css/main-menu.css">
+    <link rel="stylesheet" href="./css/Currency.css">
+</head>
+
+<body>
+
+    <!-- 登录界面 -->
+    <div id="login-screen">
+        <h1 class="game-title">逃离十中老黑</h1>
+        <video autoplay loop playsinline id="bg-video">
+            <source src="./video/login-screen.mp4" type="video/mp4">
+            无法播放，设备不支持！
+        </video>
+        <div class="overlay"></div>
+        <div class="bottom-area">
+            <button id="start-btn" disabled>进入游戏?</button>
+
+            <label class="agreement-box">
+                <input type="checkbox" id="agreement-check">
+                <span>我已阅读并同意 <a href="#">用户协议</a> 和 <a href="#">隐私政策</a></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- 游戏主容器 -->
+    <div id="game-container">
+        <div id="character-select-screen" class="hidden">
+            <h2>选择你的角色</h2>
+
+            <div class="character-options">
+                <!-- 男性角色 -->
+                <div class="char-card" data-gender="male">
+                    <img src="./images/char/char_male.jpg" alt="男性角色">
+                    <p>辰</p>
+                </div>
+
+                <!-- 女性角色 -->
+                <div class="char-card" data-gender="female">
+                    <img src="./images/char/char_female.jpg" alt="女性角色">
+                    <p>晴</p>
+                </div>
+            </div>
+
+            <!-- 自定义上传立绘区域 -->
+            <div class="custom-avatar-area" style="margin-top: 15px; text-align: center;">
+                <label for="avatar-upload" class="upload-btn" style="cursor: pointer; color: #4CAF50; font-size: 14px;">
+                    （点击这里，可以拍照或选择相册图片自定义角色立绘哦！）
+                </label>
+                <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                <div id="preview-container" style="margin-top: 10px; display: none;">
+                    <img id="avatar-preview" src="" alt="预览"
+                        style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #fff;">
+                    <p style="font-size: 12px; color: #aaa;">已选择自定义角色立绘</p>
+                </div>
+            </div>
+
+            <div class="name-input-area">
+                <input type="text" id="player-name-input" placeholder="请输入你的名字" maxlength="10">
+                <button id="confirm-char-btn">确定</button>
+            </div>
+            <p id="error-msg" class="error-text"></p>
+        </div>
+
+        <div id="dialogue-screen" class="hidden">
+            <div class="scene-container">
+                <!-- 左侧人物 -->
+                <div class="character left-char">
+                    <img id="left-char-img" src="" alt="Left Character">
+                </div>
+
+                <!-- 右侧人物 -->
+                <div class="character right-char">
+                    <img id="right-char-img" src="" alt="Right Character">
+                </div>
+
+                <!-- 底部对话框 -->
+                <div class="dialogue-box">
+                    <div class="speaker-name" id="speaker-name">角色名</div>
+                    <div class="dialogue-text" id="dialogue-text">...</div>
+                    <div class="next-indicator">点击继续 ▼</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 实际游戏运行区域 (初始隐藏) -->
+        <div id="game-play-area" class="hidden">
+
+            <!-- 背景层 (通过CSS设置背景图) -->
+            <div class="menu-background"></div>
+
+            <!-- 游戏主标题 -->
+            <div class="main-header">
+                <h1 class="game-main-title">逃离十中老黑</h1>
+                <p class="game-subtitle">选择小游戏开始游玩</p>
+            </div>
+
+            <!-- 游戏列表容器 -->
+            <div class="chapter-grid-container">
+                <div class="chapter-grid">
+
+                    <div class="chapter-card" data-target="./Play/Airplane_Battle/Airplane_Battle.html">
+                        <div class="chapter-icon">
+                            <img src="./images/icon/Airplane_Battle.jpg" alt="飞机大战">
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <div class="chapter-info">
+                            <h3>飞机大战</h3>
+                        </div>
+                    </div>
+
+                    <div class="chapter-card" data-target="./Play/Laohei_SoundTour/Laohei_SoundTour.html">
+                        <div class="chapter-icon">
+                            <img src="./images/icon/Laohei_SoundTour.jpg" alt="别踩白块儿">
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <div class="chapter-info">
+                            <h3>别踩白块儿</h3>
+                        </div>
+                    </div>
+
+                    <div class="chapter-card" data-target="./Play/Ball_Battle/Ball_Battle.html">
+                        <div class="chapter-icon">
+                            <img src="./images/icon/Ball_Battle.jpg" alt="球球大作战">
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <div class="chapter-info">
+                            <h3>球球大作战</h3>
+                        </div>
+                    </div>
+
+                    <div class="chapter-card" data-target="./Play/Slap_Laohei/Slap_Laohei.html">
+                        <div class="chapter-icon">
+                            <img src="./images/icon/Slap_Laohei.jpg" alt="暴打老黑">
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <div class="chapter-info">
+                            <h3>暴打老黑</h3>
+                        </div>
+                    </div>
+
+                    <div class="chapter-card" data-target="./Play/tictactoe/tictactoe.html">
+                        <div class="chapter-icon">
+                            <img src="./images/icon/tictactoe.jpg" alt="井字棋">
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <div class="chapter-info">
+                            <h3>井字棋</h3>
+                        </div>
+                    </div>
+
+                    <div class="chapter-card" data-target="./Play/memory_game/memory_game.html">
+                        <div class="chapter-icon">
+                            <img src="./images/icon/memory_game.jpg" alt="记忆卡牌">
+                            <div class="play-overlay">▶</div>
+                        </div>
+                        <div class="chapter-info">
+                            <h3>记忆卡牌</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/login-screen.js"></script>
+    <script src="./dialogue/dialogue-data-play1.js"></script>
+    <script src="./js/dialogue-system.js"></script>
+    <script src="./js/character-select.js"></script>
+    <script src="./js/main-menu.js"></script>
+</body>
+
+</html>

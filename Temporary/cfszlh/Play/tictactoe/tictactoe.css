@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff url('../../images/bg/bg1.png') center/cover no-repeat;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    color: #222;
+}
+
+.info {
+    font-size: 15px;
+    margin-bottom: 18px;
+    color: #555;
+    min-height: 22px;
+}
+
+.info .turn {
+    color: #4fc3f7;
+    font-weight: bold;
+}
+
+.info .ai-turn {
+    color: #ef5350;
+    font-weight: bold;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cell {
+    width: 120px;
+    height: 120px;
+    background: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.cell:hover:not(.taken) {
+    background: #e0e0e0;
+}
+
+.cell.taken {
+    cursor: default;
+}
+
+.cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.btn-restart {
+    margin-top: 20px;
+    padding: 10px 32px;
+    font-size: 16px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+}
+
+.btn-restart:hover {
+    background: #555;
+}
+
+/* 弹窗 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: #fff;
+    padding: 36px 48px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal .emoji {
+    font-size: 52px;
+    margin-bottom: 12px;
+}
+
+.modal .msg {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.modal .msg.lose {
+    color: #ef5350;
+}
+
+.modal .msg.win {
+    color: #66bb6a;
+}
+
+.modal button {
+    padding: 8px 28px;
+    font-size: 15px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal button:hover {
+    background: #555;
+}
+
+.scoreboard {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #333;
+}
+
+.scoreboard span {
+    font-weight: bold;
+}
+
+.scoreboard .s-player {
+    color: #2196F3;
+}
+
+.scoreboard .s-ai {
+    color: #e53935;
+}
+
+.scoreboard .s-draw {
+    color: #888;
+}
+
+.cheat-tip {
+    text-align: center;
+    color: #ff4d4f;
+    font-size: 14px;
+    height: 20px;
+    margin-top: 6px;
+}
+
+/* 覆盖动画 */
+.cell.cheat-overwrite {
+    animation: cheatPulse 0.4s ease-in-out 2;
+}
+
+@keyframes cheatPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 12px red;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

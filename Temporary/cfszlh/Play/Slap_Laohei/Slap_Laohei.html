@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+  <title>暴打老黑</title>
+  <link rel="stylesheet" href="Slap_Laohei.css" />
+  <link rel="stylesheet" href="../../css/Currency.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- 背景 -->
+    <div id="background"></div>
+
+    <!-- 场景1：开始界面 -->
+    <div id="scene1">
+      <!-- 标题 -->
+      <p id="title">暴打老黑</p>
+      <image src="../../images/char/char_laohei2.jpg" id="laohei1" alt="老黑" />
+      <image src="./image/start.png" id="start-btn" alt="开始游戏" />
+    </div>
+
+    <!-- 场景2：游戏主界面 -->
+    <div id="scene2" style="display: none;">
+      <div id="score">Score: 0</div>
+      <image src="../../images/char/char_laohei3.jpg" id="laohei2" alt="老黑" />
+      <!-- 巴掌由 JS 动态添加 -->
+    </div>
+
+    <!-- 音效 -->
+    <audio id="dpblt" src="./music/Slap.mp3"></audio>
+  </div>
+
+  <script src="Slap_Laohei.js"></script>
+</body>
+</html>

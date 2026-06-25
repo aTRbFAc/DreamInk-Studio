@@ -1,0 +1,163 @@
+
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        /* 登录界面容器 */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        /* 新增视频样式 */
+        #bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            z-index: -2;
+        }
+
+        #login-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* 游戏标题 */
+        .game-title {
+            margin-top: 15vh;
+            /* 距离顶部10% */
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #000;
+            /* 红色发光恐怖风格 */
+            letter-spacing: 5px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            }
+
+            50% {
+                text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+            }
+
+            100% {
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            }
+        }
+
+        /* 底部操作区域容器 */
+        .bottom-area {
+            margin-bottom: 15vh;
+            /* 距离底部10% */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* 进入游戏按钮 */
+        #start-btn {
+            padding: 15px 50px;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(45deg, #8b0000, #ff4500);
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            outline: none;
+        }
+
+        #start-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #ff4500, #8b0000);
+            box-shadow: 0 0 20px #ff4500;
+        }
+
+        #start-btn:disabled {
+            background: #555;
+            border-color: #888;
+            color: #aaa;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* 协议勾选区域 */
+        .agreement-box {
+            display: flex;
+            align-items: center;
+            color: #ddd;
+            font-size: 0.9rem;
+            user-select: none;
+        }
+
+        .agreement-box input[type="checkbox"] {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #ff4500;
+            /* 复选框选中颜色 */
+        }
+
+        .agreement-box a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .agreement-box a:hover {
+            text-decoration: underline;
+        }
+
+#game-container {
+    display: flex; 
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    position: relative; 
+    z-index: 10; 
+}
+.hidden {
+    display: none !important;
+}

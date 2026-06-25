@@ -1,0 +1,276 @@
+/* 主菜单容器 */
+#game-play-area {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 背景图片设置 */
+.menu-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 请确保路径正确，建议使用深色或模糊处理的背景以突出前景 */
+    background-image: url('../images/bg/bg2.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: brightness(0.6) blur(2px); /* 稍微变暗并模糊，突出前景卡片 */
+}
+
+/* 顶部标题区域 */
+.main-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    z-index: 1;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.game-main-title {
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+.game-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* 章节网格容器 */
+.chapter-grid-container {
+    width: 90%;
+    max-width: 1000px;
+    z-index: 1;
+    overflow-y: auto; /* 如果章节多，允许垂直滚动 */
+    padding: 20px;
+}
+
+.chapter-grid {
+    display: grid;
+    /* 响应式网格：最小宽度200px，自动填充 */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+/* 章节卡片样式 */
+.chapter-card {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+.chapter-card:hover:not(.locked) {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* 章节图标/封面区域 */
+.chapter-icon {
+    width: 100%;
+    aspect-ratio: 16/9; /* 保持16:9比例 */
+    position: relative;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.chapter-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.chapter-card:hover:not(.locked) .chapter-icon img {
+    transform: scale(1.1);
+}
+
+/* 播放覆盖层 */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.chapter-card:hover:not(.locked) .play-overlay {
+    opacity: 1;
+}
+
+/* 锁定覆盖层 */
+.lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #aaa;
+}
+
+/* 章节信息区域 */
+.chapter-info {
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+
+.chapter-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+.lock-text {
+    display: block;
+    font-size: 0.8rem;
+    color: #ff4d4d;
+    margin-top: 5px;
+}
+
+/* 锁定状态样式 */
+.chapter-card.locked {
+    cursor: not-allowed;
+    opacity: 0.7;
+    filter: grayscale(0.8);
+}
+
+.chapter-card.locked:hover {
+    transform: none;
+}
+
+/* 右上角设置按钮 (微调) */
+.settings-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.settings-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* 模态窗样式 (保持之前的逻辑，确保 z-index 足够高) */
+.modal {
+    position: fixed;
+    z-index: 1000; /* 提高层级 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #2c2c2c;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 320px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: white;
+}
+
+.setting-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.setting-action-btn {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.setting-action-btn.danger {
+    background-color: #cf3636;
+    color: white;
+}
+.setting-action-btn.danger:hover { background-color: #ff4d4d; }
+
+.setting-action-btn.primary {
+    background-color: #2e7d32;
+    color: white;
+}
+.setting-action-btn.primary:hover { background-color: #4CAF50; }
+
+.setting-action-btn:not(.danger):not(.primary) {
+    background-color: #444;
+    color: #ddd;
+}
+.setting-action-btn:not(.danger):not(.primary):hover {
+    background-color: #555;
+    color: white;
+}

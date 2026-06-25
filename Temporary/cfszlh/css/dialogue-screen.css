@@ -1,0 +1,128 @@
+/* 对话屏幕容器 */
+#dialogue-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background-image 0.5s ease-in-out, opacity 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.scene-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1024px; /* 限制最大宽度，防止在大屏上太散 */
+    margin: 0 auto;
+}
+
+/* 人物立绘样式优化 */
+.character {
+    position: absolute;
+    bottom: 140px; /* 稍微提高，避免被对话框遮挡太多 */
+    width: 150px;  /* 固定宽度 */
+    height: 200px; /* 固定高度，防止图片拉伸变形 */
+    transition: all 0.3s ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); /* 添加投影 */
+    z-index: 1;
+}
+
+.left-char { 
+    left: 5%; 
+    transform-origin: bottom left;
+}
+
+.right-char { 
+    right: 5%; 
+    transform-origin: bottom right;
+}
+
+.character img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 关键：保持图片比例，不裁剪 */
+    display: block;
+}
+
+/* 当人物不处于焦点时，可以稍微变暗或缩小，增强沉浸感 */
+.character.dimmed {
+    filter: brightness(0.6) drop-shadow(0 0 5px rgba(0,0,0,0.3));
+    transform: scale(0.95);
+}
+
+/* 对话框样式重构 */
+.dialogue-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* 居中 */
+    width: 90%;
+    max-width: 900px;
+    min-height: 140px; /* 增加最小高度 */
+    background: rgba(0, 0, 0, 0.85); /* 更深一点的背景 */
+    border: 2px solid #4a4a4a;
+    border-radius: 8px;
+    padding: 20px 25px;
+    color: #e0e0e0;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px); /* 毛玻璃效果，如果浏览器支持 */
+}
+
+.speaker-name {
+    font-weight: bold;
+    font-size: 0.7em; /* 减小字号 */
+    margin-bottom: 8px;
+    color: #ffcc00; /* 金色名字 */
+    text-shadow: 1px 1px 2px black;
+    letter-spacing: 1px;
+}
+
+.dialogue-text {
+    font-size: 1rem; /* 标准字号，不再过大 */
+    line-height: 1.6; /* 增加行高，易读 */
+    flex-grow: 1; /* 占据剩余空间 */
+    word-wrap: break-word; /* 允许长单词换行 */
+    white-space: pre-wrap; /* 保留换行符 */
+    overflow-y: auto; /* 如果文字真的非常多，允许内部滚动 */
+    padding-right: 20px; /* 给滚动条留空间 */
+}
+
+/* 自定义滚动条样式 (Webkit) */
+.dialogue-text::-webkit-scrollbar {
+    width: 6px;
+}
+.dialogue-text::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+}
+
+/* 继续指示器优化 */
+.next-indicator {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 0.5em;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.hidden {
+    display: none !important;
+}
