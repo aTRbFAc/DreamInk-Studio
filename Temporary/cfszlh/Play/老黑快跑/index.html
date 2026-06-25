@@ -1,0 +1,117 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>老黑快跑</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    
+    <div id="ui">
+        <div class="score-panel">
+            <span id="score">0</span>
+        </div>
+        
+        <div class="timer-display" id="timerDisplay">03:00</div>
+        
+        <div class="combo-container" id="comboBox">
+            <div class="combo-num" id="comboNum">0</div>
+            <div class="combo-text">COMBO</div>
+        </div>
+        
+        <div class="fever-text" id="feverText">FEVER</div>
+        
+        <div class="fever-bar">
+            <div class="fever-fill" id="feverFill"></div>
+        </div>
+        
+        <div class="attack-buttons" id="attackButtons" style="display: none;">
+            <div class="attack-btn left" id="btnAir" onclick="attackAir()">
+                <span class="attack-hint">跳跃击打</span>
+                <span class="btn-icon">⬆️</span>
+                <span class="btn-label">空中</span>
+            </div>
+            <div class="attack-btn right" id="btnGround" onclick="attackGround()">
+                <span class="attack-hint">原地击打</span>
+                <span class="btn-icon">⬇️</span>
+                <span class="btn-label">地面</span>
+            </div>
+        </div>
+    </div>
+
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🎵</button>
+
+    <!-- 主菜单 - 点击角色图片开始游戏 -->
+    <div id="mainMenu" class="screen">
+        <div class="game-title">老黑快跑</div>
+        <div class="character-start" onclick="showSceneSelect()">
+            <div class="face-container">
+                <img id="menuFace" src="lh.png" alt="点击开始">
+            </div>
+            <div class="start-hint">点击开始游戏</div>
+        </div>
+    </div>
+
+    <!-- 场景选择 -->
+    <div id="sceneSelect" class="screen hidden">
+        <div class="section-title">选择场景</div>
+        <div class="card-grid">
+            <div class="card" onclick="selectScene('candy')" style="--card-color: #ff69b4;">
+                <div class="card-icon">🍬</div>
+                <div class="card-name">糖果工厂</div>
+            </div>
+            <div class="card" onclick="selectScene('neon')" style="--card-color: #00f3ff;">
+                <div class="card-icon">🏙️</div>
+                <div class="card-name">霓虹都市</div>
+            </div>
+            <div class="card" onclick="selectScene('ghost')" style="--card-color: #9d4edd;">
+                <div class="card-icon">🏰</div>
+                <div class="card-name">幽灵城堡</div>
+            </div>
+            <div class="card" onclick="selectScene('pixel')" style="--card-color: #39ff14;">
+                <div class="card-icon">👾</div>
+                <div class="card-name">像素迷宫</div>
+            </div>
+        </div>
+        <button class="back-btn" onclick="showMainMenu()">返回</button>
+    </div>
+
+    <!-- 结算界面 -->
+    <div id="resultScreen" class="screen hidden">
+        <div class="result-container">
+            <div class="rank-title">RANK</div>
+            <div class="rank-display" id="rankDisplay">S</div>
+            <div class="rank-desc" id="rankDesc">完美演奏！</div>
+            
+            <div class="result-stats">
+                <div class="stat-row">
+                    <span class="stat-label">最终得分</span>
+                    <span class="stat-value" id="finalScore">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">最高连击</span>
+                    <span class="stat-value" id="finalCombo">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">命中率</span>
+                    <span class="stat-value" id="finalAccuracy">100%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Fever次数</span>
+                    <span class="stat-value" id="finalFever">0</span>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn-primary" onclick="restartGame()">再次挑战</button>
+                <button class="btn-secondary" onclick="backToMenu()">返回菜单</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
