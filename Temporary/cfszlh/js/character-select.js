@@ -157,8 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (typeof DialogueSystem !== 'undefined') {
             DialogueSystem.start({
-                data: window.DIALOGUE_PLAY1,   // ✅ 关键
-                background: '../images/bg/bg1.png',
+                data: window.DIALOGUE_PLAY1,
+                background: './images/bg/bg1.png',
                 player: playerData,
                 onComplete: () => {
                     sessionStorage.setItem('game_source', 'dialogue_complete');
