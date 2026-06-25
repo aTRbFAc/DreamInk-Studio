@@ -17,10 +17,18 @@
     <!-- 登录界面 -->
     <div id="login-screen">
         <h1 class="game-title">逃离十中老黑</h1>
-        <video autoplay loop playsinline id="bg-video">
-            <source src="./video/login-screen.mp4" type="video/mp4">
-            无法播放，设备不支持！
-        </video>
+        <video
+  autoplay
+  muted
+  loop
+  playsinline
+  id="bg-video"
+  preload="auto"
+>
+  <source src="./video/login-screen.mp4" type="video/mp4">
+  无法播放，设备不支持！
+</video>
+
         <div class="overlay"></div>
         <div class="bottom-area">
             <button id="start-btn" disabled>进入游戏?</button>
@@ -178,6 +186,41 @@
     <script src="./js/dialogue-system.js"></script>
     <script src="./js/character-select.js"></script>
     <script src="./js/main-menu.js"></script>
+    <script>
+  const video = document.getElementById('bg-video');
+
+  // 防止重复绑定
+  let unlocked = false;
+
+  function enableSound() {
+    if (unlocked) return;
+    unlocked = true;
+
+    video.muted = false;
+    video.volume = 0.8;
+
+    // 有些浏览器需要重新 play()
+    video.play().catch(() => {
+      // 极端情况兜底
+      video.muted = true;
+    });
+
+    // 解绑事件
+    document.removeEventListener('click', enableSound);
+    document.removeEventListener('touchstart', enableSound);
+  }
+
+  // 监听点击 & 触摸
+  document.addEventListener('click', enableSound);
+  document.addEventListener('touchstart', enableSound);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && video.paused) {
+    video.play();
+  }
+});
+
+</script>
+
 </body>
 
 </html>
